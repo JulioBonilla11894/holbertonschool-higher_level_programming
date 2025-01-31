@@ -3,7 +3,7 @@
 class Square:
     """Defines a square with private instance attributes 'size' and 'position'."""
 
-    def __init__(self, size=0, position=(0, )):
+    def __init__(self, size=0, position=(0, 0)):
         """Initializes the square with given size and position.
 
         Args:
@@ -59,9 +59,8 @@ class Square:
             TypeError: If position is not a tuple of 2 positive integers.
             ValueError: If any element of position is less than 0.
         """
-        if not isinstance(value, tuple) or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not all(isinstance(i, int) and i >= 0 for i in value):
+        if (not isinstance(value, tuple) or len(value) != 2 or
+            not all(isinstance(i, int) and i >= 0 for i in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
