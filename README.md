@@ -1,6 +1,4 @@
-# Creating repository:
-
-holbertonschool-higher_level_programming
+Creating repository for education purposes
 
 # Purpose:
 
