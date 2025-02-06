@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 class BaseGeometry:
+    """Base class for geometric shapes"""
     def area(self):
         raise Exception("area() is not implemented")
 
@@ -11,6 +12,7 @@ class BaseGeometry:
             raise ValueError(f"{name} must be greater than 0")
 
 class Rectangle(BaseGeometry):
+    """Rectangle class inheriting from BaseGeometry"""
     def __init__(self, width, height):
         self.integer_validator("width", width)
         self.integer_validator("height", height)
@@ -25,10 +27,10 @@ class Rectangle(BaseGeometry):
 
 
 class Square(Rectangle):
+    """Square class inheriting from Rectangle"""
     def __init__(self, size):
         self.integer_validator("size", size)
         self.__size = size
-
         super().__init__(size, size)
 
     def area(self):
