@@ -1,16 +1,17 @@
 #!/usr/bin/python3
+'''task 7 module'''
+
 
 import sys
-from 5-save_to_json_file import save_to_json_file
-from 6-load_from_json_file import load_from_json_file
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
-filename = "add_item.json"
+arglist = list(sys.argv[1:])
 
 try:
-    current_list = load_from_json_file(filename)
-except FileNotFoundError:
-    current_list = []
+    old_data = load_from_json_file('add_item.json')
+except Exception:
+    old_data = []
 
-current_list.extend(sys.argv[1:])
-
-save_to_json_file(current_list, filename)
+old_data.extend(arglist)
+save_to_json_file(old_data, 'add_item.json')

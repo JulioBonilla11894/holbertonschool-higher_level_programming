@@ -1,10 +1,9 @@
 #!/usr/bin/python3
+"""Contains the "class_to_json" function"""
+
 
 def class_to_json(obj):
-    obj_dict = {}
-
-    for key, value in obj.__dict__.items():
-        if isinstance(value, (int, str, bool, list, dict)):
-            obj_dict[key] = value
-
-    return obj_dict
+    """return the dictionary description with simple data structure
+    (list, dictionary, string, integer and boolean)
+    for JSON serialization of an object"""
+    return obj.__dict__
