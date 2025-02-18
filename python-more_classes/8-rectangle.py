@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+'''Module for Rectangle class.'''
+
 
 class Rectangle:
     number_of_instances = 0
@@ -38,31 +40,44 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        if self.__width == 0 or self.__height == 0:
+        '''Returns perimeter of this rectangle.'''
+        if not self.width or not self.height:
             return 0
-        return 2 * (self.__width + self.__height)
+        return 2 * (self.width + self.height)
 
     def __str__(self):
-        if self.__width == 0 or self.__height == 0:
+        '''Returns string representation.'''
+        if not self.width or not self.height:
             return ""
-        return "\n".join([str(self.print_symbol) * self.__width] * self.__height)
+        return ((str(self.print_symbol) * self.width + "\n") *
+                self.height) [:-1]
 
     def __repr__(self):
+        '''Returns formal string representation...'''
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-
+        '''Called at instance deletion..'''
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
+        '''Returns the bigger of two rectangles.
+
+        Args:
+            rect_1: The first rectangle.
+            rect_2: The second rectangle.
+        Raises:
+            TypeError: If rect_1, rect_2 are not instances of Rectangle.
+        Returns:
+            The rectangle with the larger area.
+        '''
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-
-        if rect_1.area() >= rect_2.area():
-            return rect_1
-        return rect_2
+        if rect_2.area() > rect_1.area():
+            return rect_2
+        return rect_1
 

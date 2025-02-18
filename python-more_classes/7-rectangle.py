@@ -1,10 +1,23 @@
 #!/usr/bin/python3
+'''Module for Retangle class.'''
+
 
 class Rectangle:
+    '''This class defines a simple Rectangle'''
+
     number_of_instances = 0
-    print_symbol = "#"
+    '''int: The number of active instances.'''
+
+    print_symbol = '#'
+    '''type: Print symbol, can be any type.'''
 
     def __init__(self, width=0, height=0):
+        '''Constructor
+
+        Args:
+            width: The width of rectangle.
+            height: The height of rectangle.
+        '''
 
         Rectangle.number_of_instances += 1
         self.width = width
@@ -12,6 +25,12 @@ class Rectangle:
 
     @property
     def width(self):
+        '''Property for the width of the rectangle.
+
+        Raises:
+            TypeError: If width is not an integer.
+            ValueError: If width is less than 0.
+        '''
         return self.__width
 
     @width.setter
@@ -35,23 +54,28 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        return self.__width * self.__height
+        '''Returns area of this rectangle.'''
+        return self.width * self.height
 
     def perimeter(self):
-        if self.__width == 0 or self.__height == 0:
+        '''Returns perimeter of this rectangle.'''
+        if not self.width or not self.height:
             return 0
-        return 2 * (self.__width + self.__height)
+        return (self.__width + self.__height) * 2
 
     def __str__(self):
-        if self.__width == 0 or self.__height == 0:
+        '''Returns string representation.'''
+        if not self.width or not self.height:
             return ""
-        return "\n".join([str(self.print_symbol) * self.__width] * self.__height)
+        return (([str(self.print_symbol) * self.width + "\n") *
+                 self.height) [:-1]
 
     def __repr__(self):
-        return f"Rectangle({self.__width}, {self.__height})"
+        '''Returns formal string representation...'''
+        return "Rectangle(" + str (self.width) + ", " + str(self.height) + ")"
 
     def __del__(self):
-
+        '''Called at instance deletion.'''
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
