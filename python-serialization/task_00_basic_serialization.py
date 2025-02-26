@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Module for serialize_and_save_to_file and load_and_deserialize methods"""
-import
+import json
 
 
 def serialize_and_save_to_file(data, filename):
