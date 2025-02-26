@@ -1,0 +1,6 @@
+*main.py
+*.json
+*.pkl
+*.csv
+*.xml
+__pycache__/
