@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 
-def serailize_to_xml(dictionary, filename):
+def serialize_to_xml(dictionary, filename):
     """serialize the dictionary into XML and save it to the given filename"""
     root = ET.Element('data')
     for key, value in dictionary.items():
@@ -18,7 +18,7 @@ def serailize_to_xml(dictionary, filename):
         f.write(formatted_xml)
 
 
-def serialize_from_xml(filename):
+def deserialize_from_xml(filename):
     """read the XML data from that filename,
     and return a deserialized Python dictionary"""
     try:
